@@ -1,0 +1,6 @@
+<Solution>
+  <Project Path="../CONFIGURACION/CONFIGURACION.csproj" />
+  <Project Path="../MAESTRO/MAESTRO.csproj" />
+  <Project Path="../SEGURIDAD/SEGURIDAD.csproj" />
+  <Project Path="API_TAREO_CAMPO.csproj" />
+</Solution>

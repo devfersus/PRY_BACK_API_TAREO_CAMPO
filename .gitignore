@@ -1,0 +1,47 @@
+## Visual Studio files
+.vs/
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+## Build output
+[Bb]in/
+[Oo]bj/
+[Ll]og/
+[Ll]ogs/
+
+## NuGet packages
+*.nupkg
+*.snupkg
+packages/
+!**/packages/build/
+project.lock.json
+project.fragment.lock.json
+artifacts/
+
+## Publish profiles (keep the .pubxml but ignore user-specific)
+**/Properties/PublishProfiles/*.pubxml.user
+
+## Roslyn cache files
+*.sourcelink.json
+
+## Rider / JetBrains
+.idea/
+*.sln.iml
+
+## OS files
+.DS_Store
+Thumbs.db
+
+## Claude Code
+.claude/
+CLAUDE.md
+
+
+
+## Environment / secrets
+.env
+*.env
+appsettings.Development.json
+appsettings.Local.json
