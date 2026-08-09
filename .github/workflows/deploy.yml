@@ -22,7 +22,7 @@ jobs:
             set -e
             cd /opt/PRY_SECURITY_BACK_API
             git fetch origin
-            git checkout migrations
-            git pull origin migrations
+            git checkout PRD
+            git pull origin PRD
             docker-compose up -d --build
             docker-compose ps
