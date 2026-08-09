@@ -28,7 +28,7 @@ namespace SEGURIDAD.Modulo_.Web.Aplicacion.CasosUso
         public async Task ActualizarAsync(Guid id, ActualizarModuloDTO request, CancellationToken ct = default)
         {
             var modulo = await moduloRepository.ObtenerPorIdAsync(id, ct);
-            modulo.Actualizar(request.Descripcion);
+            modulo.Actualizar(request.Descripcion, request.Activo);
             await moduloRepository.ActualizarAsync(modulo, ct);
         }
 

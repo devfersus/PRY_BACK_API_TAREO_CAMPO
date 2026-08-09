@@ -28,7 +28,7 @@ namespace SEGURIDAD.Accion_.Web.Aplicacion.CasosUso
         public async Task ActualizarAsync(Guid id, ActualizarAccionDTO request, CancellationToken ct = default)
         {
             var accion = await accionRepository.ObtenerPorIdAsync(id, ct);
-            accion.Actualizar(request.Descripcion);
+            accion.Actualizar(request.Descripcion, request.Activo);
             await accionRepository.ActualizarAsync(accion, ct);
         }
 

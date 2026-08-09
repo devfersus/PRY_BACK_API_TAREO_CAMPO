@@ -1,6 +1,7 @@
 using SEGURIDAD.Permiso_.Web.Aplicacion.DTOs;
 using SEGURIDAD.Permiso_.Web.Aplicacion.Ports;
 using SEGURIDAD.Permiso_.Web.Dominio.Entidad;
+using SEGURIDAD.Permiso_.Web.Dominio.Exceptions;
 using SEGURIDAD.Permiso_.Web.Dominio.Interface;
 
 namespace SEGURIDAD.Permiso_.Web.Aplicacion.CasosUso
@@ -26,6 +27,10 @@ namespace SEGURIDAD.Permiso_.Web.Aplicacion.CasosUso
 
             foreach (var d in request.Detalles)
             {
+                if (await permisoDetalleRepository.ExisteCombinacionSinAccionAsync(
+                        request.PermisoId, d.ModuloId, d.SubModuloId, ct))
+                    throw new PermisoDetalleDuplicadoException();
+
                 var existente = await permisoDetalleRepository.BuscarPorCombinacionAsync(
                     request.PermisoId, d.ModuloId, d.SubModuloId, d.AccionId, ct);
 

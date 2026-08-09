@@ -10,7 +10,7 @@ namespace API_TAREO_CAMPO.Controllers.Seguridad.SubModulo_.Controller
     [Route("api/seguridad/submodulos")]
     public class SubModuloController(ISubModuloCasoUso subModuloCasoUso) : ControllerBase
     {
-        [HttpGet]
+        [HttpGet("listar")]
         [ProducesResponseType<List<SubModuloDTO>>(StatusCodes.Status200OK)]
         public async Task<IActionResult> Listar(CancellationToken ct)
         {
@@ -18,10 +18,10 @@ namespace API_TAREO_CAMPO.Controllers.Seguridad.SubModulo_.Controller
             return Ok(subModulos);
         }
 
-        [HttpGet("{id:guid}")]
+        [HttpGet]
         [ProducesResponseType<SubModuloDTO>(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
-        public async Task<IActionResult> ObtenerPorId(Guid id, CancellationToken ct)
+        public async Task<IActionResult> ObtenerPorId([FromQuery] Guid id, CancellationToken ct)
         {
             var subModulo = await subModuloCasoUso.ObtenerPorIdAsync(id, ct);
             return Ok(subModulo);

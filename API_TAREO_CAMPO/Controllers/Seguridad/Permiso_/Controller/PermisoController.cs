@@ -10,7 +10,7 @@ namespace API_TAREO_CAMPO.Controllers.Seguridad.Permiso_.Controller
     [Route("api/seguridad/permisos")]
     public class PermisoController(IPermisoCasoUso permisoCasoUso) : ControllerBase
     {
-        [HttpGet]
+        [HttpGet("listar")]
         [ProducesResponseType<List<PermisoDTO>>(StatusCodes.Status200OK)]
         public async Task<IActionResult> Listar(CancellationToken ct)
         {
@@ -18,10 +18,10 @@ namespace API_TAREO_CAMPO.Controllers.Seguridad.Permiso_.Controller
             return Ok(permisos);
         }
 
-        [HttpGet("{id:guid}")]
+        [HttpGet]
         [ProducesResponseType<PermisoDTO>(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
-        public async Task<IActionResult> ObtenerPorId(Guid id, CancellationToken ct)
+        public async Task<IActionResult> ObtenerPorId([FromQuery] Guid id, CancellationToken ct)
         {
             var permiso = await permisoCasoUso.ObtenerPorIdAsync(id, ct);
             return Ok(permiso);

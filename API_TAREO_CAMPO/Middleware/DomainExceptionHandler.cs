@@ -90,6 +90,16 @@ namespace API_TAREO_CAMPO.Middleware
                     }, cancellationToken);
                     return true;
 
+                case PermisoDetalleDuplicadoException dupEx:
+                    httpContext.Response.StatusCode = StatusCodes.Status409Conflict;
+                    await httpContext.Response.WriteAsJsonAsync(new ProblemDetails
+                    {
+                        Status = StatusCodes.Status409Conflict,
+                        Title  = "Registro duplicado",
+                        Detail = dupEx.Message
+                    }, cancellationToken);
+                    return true;
+
                 case PermisoNoEncontradoException permisoEx:
                     httpContext.Response.StatusCode = StatusCodes.Status404NotFound;
                     await httpContext.Response.WriteAsJsonAsync(new ProblemDetails

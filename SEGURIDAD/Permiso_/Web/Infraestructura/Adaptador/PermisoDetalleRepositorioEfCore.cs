@@ -39,6 +39,13 @@ namespace SEGURIDAD.Permiso_.Web.Infraestructura.Adaptador
                    && pd.AccionId    == accionId, ct
                 );
 
+        public async Task<bool> ExisteCombinacionSinAccionAsync(
+            Guid permisoId, Guid moduloId, Guid subModuloId, CancellationToken ct = default) =>
+            await ctx.PermisoDetalles.AnyAsync(
+                pd =>  pd.PermisoId   == permisoId
+                    && pd.ModuloId    == moduloId
+                    && pd.SubModuloId == subModuloId, ct);
+
         public async Task ActualizarAsync(PermisoDetalle detalle, CancellationToken ct = default)
         {
             await ctx.SaveChangesAsync(ct);

@@ -11,8 +11,11 @@ namespace SEGURIDAD.Modulo_.Web.Dominio.Entidad
         public static Modulo Registrar(string descripcion) =>
             new() { Id = Guid.NewGuid(), Descripcion = descripcion.Trim(), Activo = true };
 
-        public void Actualizar(string descripcion) =>
+        public void Actualizar(string descripcion, bool activo)
+        {
             Descripcion = descripcion.Trim();
+            Activo      = activo;
+        }
 
         public void EliminarLogico() => Activo = false;
     }

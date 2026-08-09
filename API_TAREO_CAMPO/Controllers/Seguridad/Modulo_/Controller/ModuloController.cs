@@ -10,7 +10,7 @@ namespace API_TAREO_CAMPO.Controllers.Seguridad.Modulo_.Controller
     [Route("api/seguridad/modulos")]
     public class ModuloController(IModuloCasoUso moduloCasoUso) : ControllerBase
     {
-        [HttpGet]
+        [HttpGet("listar")]
         [ProducesResponseType<List<ModuloDTO>>(StatusCodes.Status200OK)]
         public async Task<IActionResult> Listar(CancellationToken ct)
         {
@@ -18,10 +18,10 @@ namespace API_TAREO_CAMPO.Controllers.Seguridad.Modulo_.Controller
             return Ok(modulos);
         }
 
-        [HttpGet("{id:guid}")]
+        [HttpGet]
         [ProducesResponseType<ModuloDTO>(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
-        public async Task<IActionResult> ObtenerPorId(Guid id, CancellationToken ct)
+        public async Task<IActionResult> ObtenerPorId([FromQuery] Guid id, CancellationToken ct)
         {
             var modulo = await moduloCasoUso.ObtenerPorIdAsync(id, ct);
             return Ok(modulo);
