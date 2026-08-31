@@ -1,6 +1,7 @@
 namespace SEGURIDAD.Usuario_.Web.Aplicacion.DTOs
 {
     public record ActualizarUsuarioDTO(
+        string? Codigo,
         string Nombre,
         string ApellidoPaterno,
         string ApellidoMaterno,

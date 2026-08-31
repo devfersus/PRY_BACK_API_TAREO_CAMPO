@@ -32,6 +32,8 @@ namespace SEGURIDAD.Usuario_.Web.Infraestructura.Persistencia
                 eb.HasIndex(e => e.Valor).IsUnique();
             });
 
+            builder.Property(u => u.Codigo).HasColumnName("Codigo").HasMaxLength(10);
+
             builder.Property(u => u.Contraseña).HasMaxLength(512).IsRequired();
             builder.Property(u => u.Activo).IsRequired();
             builder.Property(u => u.FechaCreacion).IsRequired();

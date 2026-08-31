@@ -7,6 +7,8 @@ using SEGURIDAD.Modulo_.Web.Dominio.Entidad;
 using SEGURIDAD.Modulo_.Web.Infraestructura.Persistencia;
 using SEGURIDAD.Permiso_.Web.Dominio.Entidad;
 using SEGURIDAD.Permiso_.Web.Infraestructura.Persistencia;
+using SEGURIDAD.Proveedor_.Web.Dominio.Entidad;
+using SEGURIDAD.Proveedor_.Web.Infraestructura.Persistencia;
 using SEGURIDAD.SubModulo_.Web.Dominio.Entidad;
 using SEGURIDAD.SubModulo_.Web.Infraestructura.Persistencia;
 using SEGURIDAD.Usuario_.Web.Dominio.Entidad;
@@ -25,6 +27,7 @@ namespace SEGURIDAD.Infraestructura
         public DbSet<AccionSubModulo> AccionSubModulos => Set<AccionSubModulo>();
         public DbSet<Permiso>         Permisos         => Set<Permiso>();
         public DbSet<PermisoDetalle>  PermisoDetalles  => Set<PermisoDetalle>();
+        public DbSet<Proveedor>       Proveedores      => Set<Proveedor>();
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -35,6 +38,7 @@ namespace SEGURIDAD.Infraestructura
             modelBuilder.ApplyConfiguration(new AccionSubModuloConfiguration());
             modelBuilder.ApplyConfiguration(new PermisoConfiguration());
             modelBuilder.ApplyConfiguration(new PermisoDetalleConfiguration());
+            modelBuilder.ApplyConfiguration(new ProveedorConfiguration());
             base.OnModelCreating(modelBuilder);
         }
     }

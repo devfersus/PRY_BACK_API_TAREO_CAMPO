@@ -17,8 +17,16 @@ namespace API_TAREO_CAMPO.Controllers.Seguridad.Usuario.CasosUso.Controller
         {
             var usuarios = await casoUso.ListarUsuario(ct);
             return Ok(usuarios);
-        } 
- 
+        }
+
+        [HttpGet("combo")]
+        [ProducesResponseType<List<UsuarioComboDTO>>(StatusCodes.Status200OK)]
+        public async Task<IActionResult> Combo(CancellationToken ct)
+        {
+            var combo = await casoUso.ListarComboAsync(ct);
+            return Ok(combo);
+        }
+
         [HttpGet("detalle")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]

@@ -22,6 +22,7 @@ namespace SEGURIDAD.Usuario_.Web.Aplicacion.CasosUso
             await domainService.GarantizarEmailUnicoAsync(email, ct);
 
             var usuario = Usuario.Registrar(
+                request.Codigo,
                 nombre,
                 apellidoMaterno,
                 apellidoPaterno,
@@ -52,7 +53,7 @@ namespace SEGURIDAD.Usuario_.Web.Aplicacion.CasosUso
             var apellidoMaterno = ApellidoMaterno.Agregar(request.ApellidoMaterno);
             var email           = Email.Agregar(request.Email);
 
-            usuario.Actualizar(nombre, apellidoMaterno, apellidoPaterno, email, request.Contraseña);
+            usuario.Actualizar(request.Codigo, nombre, apellidoMaterno, apellidoPaterno, email, request.Contraseña);
 
             await usuarioRepository.ActualizarUsuario(usuario, ct);
 
@@ -73,8 +74,19 @@ namespace SEGURIDAD.Usuario_.Web.Aplicacion.CasosUso
             await usuarioRepository.EliminarUsuario(usuario, ct);
         }
 
+        public async Task<List<UsuarioComboDTO>> ListarComboAsync(CancellationToken ct = default)
+        {
+            var usuarios = await usuarioRepository.ListarActivosAsync(ct);
+            return usuarios.Select(u => new UsuarioComboDTO(
+                u.Codigo,
+                u.Nombre.Value,
+                u.ApellidoPaterno.Value,
+                u.ApellidoMaterno.Value)).ToList();
+        }
+
         private static UsuarioDTO MapearDTO(Usuario u) =>
             new(u.Id,
+                u.Codigo,
                 u.Nombre.Value,
                 u.ApellidoPaterno.Value,
                 u.ApellidoMaterno.Value,

@@ -1,10 +1,11 @@
-﻿using SEGURIDAD.Usuario_.Web.Dominio.ValueObject;
+using SEGURIDAD.Usuario_.Web.Dominio.ValueObject;
 
 namespace SEGURIDAD.Usuario_.Web.Dominio.Entidad
 {
     public class Usuario
     {
         public Guid Id { get; private set; }
+        public string? Codigo { get; private set; }
         public Nombre Nombre { get; private set; }
         public ApellidoMaterno ApellidoMaterno { get; private set; }
         public ApellidoPaterno ApellidoPaterno { get; private set; }
@@ -14,14 +15,16 @@ namespace SEGURIDAD.Usuario_.Web.Dominio.Entidad
         public DateTime FechaCreacion { get; private set; }
         public DateTime? FechaModificacion { get; private set; }
         private Usuario() { }
-        private Usuario(Guid id, 
-              Nombre nombre
-            , ApellidoMaterno apellidoMaterno
-            , ApellidoPaterno apellidoPaterno
-            , Email email
-            , string contraseña)
+        private Usuario(Guid id,
+              string?          codigo
+            , Nombre           nombre
+            , ApellidoMaterno  apellidoMaterno
+            , ApellidoPaterno  apellidoPaterno
+            , Email            email
+            , string           contraseña)
         {
             Id              = id;
+            Codigo          = codigo?.Trim();
             Nombre          = nombre;
             ApellidoMaterno = apellidoMaterno;
             ApellidoPaterno = apellidoPaterno;
@@ -31,14 +34,16 @@ namespace SEGURIDAD.Usuario_.Web.Dominio.Entidad
             FechaCreacion   = DateTime.UtcNow;
         }
         public static Usuario Registrar(
-             Nombre           nombre
-            , ApellidoMaterno apellidoMaterno
-            , ApellidoPaterno apellidoPaterno
-            , Email           email
-            , string          contraseña
+             string?          codigo
+            , Nombre           nombre
+            , ApellidoMaterno  apellidoMaterno
+            , ApellidoPaterno  apellidoPaterno
+            , Email            email
+            , string           contraseña
             )
         {
             return new Usuario(Guid.NewGuid()
+                ,codigo
                 ,nombre
                 ,apellidoMaterno
                 ,apellidoPaterno
@@ -48,13 +53,15 @@ namespace SEGURIDAD.Usuario_.Web.Dominio.Entidad
         }
 
         public void Actualizar(
-             Nombre           nombre
-            , ApellidoMaterno apellidoMaterno
-            , ApellidoPaterno apellidoPaterno
-            , Email           email
-            , string          contraseña
+             string?          codigo
+            , Nombre           nombre
+            , ApellidoMaterno  apellidoMaterno
+            , ApellidoPaterno  apellidoPaterno
+            , Email            email
+            , string           contraseña
             )
         {
+            Codigo            = codigo?.Trim();
             Nombre            = nombre;
             ApellidoMaterno   = apellidoMaterno;
             ApellidoPaterno   = apellidoPaterno;
