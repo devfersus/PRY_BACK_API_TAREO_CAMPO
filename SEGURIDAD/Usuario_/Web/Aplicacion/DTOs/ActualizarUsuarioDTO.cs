@@ -6,7 +6,7 @@ namespace SEGURIDAD.Usuario_.Web.Aplicacion.DTOs
         string ApellidoPaterno,
         string ApellidoMaterno,
         string Email,
-        string Contraseña,
+        string? Contraseña,
         bool Activo
     );
 }

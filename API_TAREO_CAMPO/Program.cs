@@ -1,7 +1,13 @@
+using API_TAREO_CAMPO.Controllers.Core.Ajuste_.Scoped;
 using API_TAREO_CAMPO.Controllers.Core.Compra_.Scoped;
+using API_TAREO_CAMPO.Controllers.Core.Kardex_.Scoped;
+using API_TAREO_CAMPO.Controllers.Core.Salida_.Scoped;
+using API_TAREO_CAMPO.Controllers.Core.Stock_.Scoped;
+using API_TAREO_CAMPO.Controllers.Maestro.Almacen_.Scoped;
 using API_TAREO_CAMPO.Controllers.Maestro.Categoria_.Scoped;
 using API_TAREO_CAMPO.Controllers.Maestro.Pais_.Scoped;
 using API_TAREO_CAMPO.Controllers.Maestro.Producto_.Scoped;
+using API_TAREO_CAMPO.Controllers.Maestro.UnidadMedida_.Scoped;
 using API_TAREO_CAMPO.Controllers.Seguridad.Login.CasosUso.Auth.Scoped;
 using API_TAREO_CAMPO.Controllers.Seguridad.Navegacion_.Scoped;
 using API_TAREO_CAMPO.Filters;
@@ -47,7 +53,13 @@ builder.Services.AgregarModuloNavegacion();
 builder.Services.AgregarModuloPais();
 builder.Services.AgregarModuloCategoria();
 builder.Services.AgregarModuloProducto();
+builder.Services.AgregarModuloUnidadMedida();
+builder.Services.AgregarModuloAlmacen();
 builder.Services.AgregarModuloCompra();
+builder.Services.AgregarModuloSalida();
+builder.Services.AgregarModuloStock();
+builder.Services.AgregarModuloKardex();
+builder.Services.AgregarModuloAjuste();
 
 builder.Services.AddSingleton<IRequestGuard, RedisRequestGuard>();
 builder.Services.AddScoped<EmailRequestGuardFilter>();

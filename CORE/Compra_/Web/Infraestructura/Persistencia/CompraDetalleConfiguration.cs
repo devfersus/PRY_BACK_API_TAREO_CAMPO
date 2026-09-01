@@ -18,6 +18,10 @@ namespace CORE.Compra_.Web.Infraestructura.Persistencia
                    .HasColumnName("codigo_compra")
                    .HasMaxLength(10);
 
+            builder.Property(c => c.CodigoAlmacen)
+                   .HasColumnName("codigo_almacen")
+                   .HasMaxLength(10);
+
             builder.Property(c => c.Unidad)
                    .HasColumnName("unidad")
                    .HasPrecision(10, 2);

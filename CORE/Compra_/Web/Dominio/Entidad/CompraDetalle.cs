@@ -4,6 +4,7 @@ namespace CORE.Compra_.Web.Dominio.Entidad
     {
         public Guid     IdCompraDetalle     { get; private set; }
         public string?  CodigoCompra        { get; private set; }
+        public string?  CodigoAlmacen       { get; private set; }
         public decimal? Unidad              { get; private set; }
         public decimal? Cantidad            { get; private set; }
         public string?  CodigoProducto      { get; private set; }
@@ -22,6 +23,7 @@ namespace CORE.Compra_.Web.Dominio.Entidad
 
         public static CompraDetalle Registrar(
             string?  codigoCompra,
+            string?  codigoAlmacen,
             decimal? unidad,
             decimal? cantidad,
             string?  codigoProducto,
@@ -36,6 +38,7 @@ namespace CORE.Compra_.Web.Dominio.Entidad
             {
                 IdCompraDetalle     = Guid.NewGuid(),
                 CodigoCompra        = codigoCompra,
+                CodigoAlmacen       = codigoAlmacen,
                 Unidad              = unidad,
                 Cantidad            = cantidad,
                 CodigoProducto      = codigoProducto,

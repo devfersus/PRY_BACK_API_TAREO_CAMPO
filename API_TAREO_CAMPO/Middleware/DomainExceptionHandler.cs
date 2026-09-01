@@ -1,6 +1,10 @@
+using CORE.Ajuste_.Web.Dominio.Exceptions;
+using CORE.Salida_.Web.Dominio.Exceptions;
+using MAESTRO.Almacen_.Web.Dominio.Exceptions;
 using MAESTRO.Categoria_.Web.Dominio.Exceptions;
 using MAESTRO.Pais_.Web.Dominio.Exceptions;
 using MAESTRO.Producto_.Web.Dominio.Exceptions;
+using MAESTRO.UnidadMedida_.Web.Dominio.Exceptions;
 using SEGURIDAD.Proveedor_.Web.Dominio.Exceptions;
 using SEGURIDAD.Accion_.Web.Dominio.Exceptions;
 using SEGURIDAD.AccionSubModulo_.Web.Dominio.Exceptions;
@@ -150,6 +154,46 @@ namespace API_TAREO_CAMPO.Middleware
                         Status = StatusCodes.Status404NotFound,
                         Title  = "Producto no encontrado",
                         Detail = prodEx.Message
+                    }, cancellationToken);
+                    return true;
+
+                case UnidadMedidaNoEncontradaException umEx:
+                    httpContext.Response.StatusCode = StatusCodes.Status404NotFound;
+                    await httpContext.Response.WriteAsJsonAsync(new ProblemDetails
+                    {
+                        Status = StatusCodes.Status404NotFound,
+                        Title  = "Unidad de medida no encontrada",
+                        Detail = umEx.Message
+                    }, cancellationToken);
+                    return true;
+
+                case AlmacenNoEncontradoException almEx:
+                    httpContext.Response.StatusCode = StatusCodes.Status404NotFound;
+                    await httpContext.Response.WriteAsJsonAsync(new ProblemDetails
+                    {
+                        Status = StatusCodes.Status404NotFound,
+                        Title  = "Almacén no encontrado",
+                        Detail = almEx.Message
+                    }, cancellationToken);
+                    return true;
+
+                case SalidaNoEncontradaException salidaEx:
+                    httpContext.Response.StatusCode = StatusCodes.Status404NotFound;
+                    await httpContext.Response.WriteAsJsonAsync(new ProblemDetails
+                    {
+                        Status = StatusCodes.Status404NotFound,
+                        Title  = "Salida no encontrada",
+                        Detail = salidaEx.Message
+                    }, cancellationToken);
+                    return true;
+
+                case AjusteNoEncontradoException ajusteEx:
+                    httpContext.Response.StatusCode = StatusCodes.Status404NotFound;
+                    await httpContext.Response.WriteAsJsonAsync(new ProblemDetails
+                    {
+                        Status = StatusCodes.Status404NotFound,
+                        Title  = "Ajuste no encontrado",
+                        Detail = ajusteEx.Message
                     }, cancellationToken);
                     return true;
 

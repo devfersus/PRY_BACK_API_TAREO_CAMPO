@@ -2,10 +2,15 @@ using CORE.Compra_.Web.Aplicacion.DTOs;
 using CORE.Compra_.Web.Aplicacion.Ports;
 using CORE.Compra_.Web.Dominio.Entidad;
 using CORE.Compra_.Web.Dominio.Interface;
+using CORE.Kardex_.Web.Aplicacion.Ports;
+using CORE.Stock_.Web.Aplicacion.Ports;
 
 namespace CORE.Compra_.Web.Aplicacion.CasosUso
 {
-    public class CompraServicioAplicacion(ICompraRepository compraRepository) : ICompraCasoUso
+    public class CompraServicioAplicacion(
+        ICompraRepository compraRepository,
+        IStockCasoUso     stockCasoUso,
+        IKardexCasoUso    kardexCasoUso) : ICompraCasoUso
     {
         public async Task<CompraDTO> ObtenerPorIdAsync(Guid id, CancellationToken ct = default)
         {
@@ -47,6 +52,7 @@ namespace CORE.Compra_.Web.Aplicacion.CasosUso
         {
             var detalles = request.Items.Select(item => CompraDetalle.Registrar(
                 request.CodigoCompra,
+                item.CodigoAlmacen,
                 item.Unidad,
                 item.Cantidad,
                 item.CodigoProducto,
@@ -57,6 +63,30 @@ namespace CORE.Compra_.Web.Aplicacion.CasosUso
                 request.Ipv6Registro)).ToList();
 
             await compraRepository.AgregarDetallesMasivoAsync(detalles, ct);
+
+            // Actualizar stock y registrar en kardex por cada ítem
+            foreach (var item in request.Items.Where(i => !string.IsNullOrEmpty(i.CodigoProducto)))
+            {
+                await stockCasoUso.IncrementarAsync(
+                    item.CodigoProducto!,
+                    item.CodigoAlmacen,
+                    item.Cantidad ?? 0,
+                    ct);
+
+                var stock = await stockCasoUso.ObtenerPorProductoAlmacenAsync(
+                    item.CodigoProducto!, item.CodigoAlmacen, ct);
+
+                await kardexCasoUso.RegistrarMovimientoAsync(
+                    tipoMovimiento:  "ENTRADA",
+                    codigoProducto:  item.CodigoProducto!,
+                    codigoAlmacen:   item.CodigoAlmacen,
+                    cantidad:        item.Cantidad ?? 0,
+                    saldoUnidades:   stock?.StockActual ?? 0,
+                    referenciaTipo:  "COMPRA",
+                    referenciaCodig: request.CodigoCompra,
+                    usuarioRegistro: request.UsuarioRegistro,
+                    ct);
+            }
         }
 
         public async Task<List<CompraDetalleListadoDTO>> ListarDetallesAsync(string? codigoCompra, string? codigoProveedor, CancellationToken ct = default) =>

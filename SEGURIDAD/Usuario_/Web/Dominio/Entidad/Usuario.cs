@@ -58,7 +58,8 @@ namespace SEGURIDAD.Usuario_.Web.Dominio.Entidad
             , ApellidoMaterno  apellidoMaterno
             , ApellidoPaterno  apellidoPaterno
             , Email            email
-            , string           contraseña
+            , string?          contraseña
+            , bool             activo
             )
         {
             Codigo            = codigo?.Trim();
@@ -66,7 +67,9 @@ namespace SEGURIDAD.Usuario_.Web.Dominio.Entidad
             ApellidoMaterno   = apellidoMaterno;
             ApellidoPaterno   = apellidoPaterno;
             Email             = email;
-            Contraseña        = contraseña;
+            Activo            = activo;
+            if (!string.IsNullOrWhiteSpace(contraseña))
+                Contraseña    = contraseña;
             FechaModificacion = DateTime.UtcNow;
         }
 

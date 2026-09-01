@@ -53,7 +53,7 @@ namespace SEGURIDAD.Usuario_.Web.Aplicacion.CasosUso
             var apellidoMaterno = ApellidoMaterno.Agregar(request.ApellidoMaterno);
             var email           = Email.Agregar(request.Email);
 
-            usuario.Actualizar(request.Codigo, nombre, apellidoMaterno, apellidoPaterno, email, request.Contraseña);
+            usuario.Actualizar(request.Codigo, nombre, apellidoMaterno, apellidoPaterno, email, request.Contraseña, request.Activo);
 
             await usuarioRepository.ActualizarUsuario(usuario, ct);
 

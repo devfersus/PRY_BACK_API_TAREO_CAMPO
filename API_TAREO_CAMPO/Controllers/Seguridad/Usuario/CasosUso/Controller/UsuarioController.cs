@@ -32,8 +32,8 @@ namespace API_TAREO_CAMPO.Controllers.Seguridad.Usuario.CasosUso.Controller
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         public async Task<IActionResult> ObtenerPorId([FromQuery] Guid id, CancellationToken ct)
         {
-            await casoUso.ObtenerPorIdUsuario(id, ct);
-            return Ok();
+            var usuario = await casoUso.ObtenerPorIdUsuario(id, ct);
+            return Ok(usuario);
         }
 
         [HttpPost]
