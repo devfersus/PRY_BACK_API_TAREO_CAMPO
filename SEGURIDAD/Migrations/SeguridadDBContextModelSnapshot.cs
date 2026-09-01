@@ -145,6 +145,78 @@ namespace SEGURIDAD.Migrations
                     b.ToTable("PERMISO_DETALLE", (string)null);
                 });
 
+            modelBuilder.Entity("SEGURIDAD.Proveedor_.Web.Dominio.Entidad.Proveedor", b =>
+                {
+                    b.Property<Guid>("IdProveedor")
+                        .HasColumnType("uuid")
+                        .HasColumnName("ID_PROVEEDOR");
+
+                    b.Property<string>("Codigo")
+                        .HasMaxLength(10)
+                        .HasColumnType("character varying(10)")
+                        .HasColumnName("CODIGO");
+
+                    b.Property<string>("Comentario")
+                        .HasMaxLength(100)
+                        .HasColumnType("character varying(100)")
+                        .HasColumnName("COMENTARIO");
+
+                    b.Property<string>("Descripcion")
+                        .HasMaxLength(50)
+                        .HasColumnType("character varying(50)")
+                        .HasColumnName("DESCRIPCION");
+
+                    b.Property<bool>("Estado")
+                        .HasColumnType("boolean")
+                        .HasColumnName("ESTADO");
+
+                    b.Property<DateTimeOffset>("FechaModificacion")
+                        .HasColumnType("timestamp with time zone")
+                        .HasColumnName("FECHA_MODIFICACION");
+
+                    b.Property<DateTimeOffset>("FechaRegistro")
+                        .HasColumnType("timestamp with time zone")
+                        .HasColumnName("FECHA_REGISTRO");
+
+                    b.Property<string>("Ipv4Modificacion")
+                        .HasMaxLength(25)
+                        .HasColumnType("character varying(25)")
+                        .HasColumnName("IPV4_MODIFICACION");
+
+                    b.Property<string>("Ipv4Registro")
+                        .HasMaxLength(25)
+                        .HasColumnType("character varying(25)")
+                        .HasColumnName("IPV4_REGISTRO");
+
+                    b.Property<string>("Ipv6Modificacion")
+                        .HasMaxLength(25)
+                        .HasColumnType("character varying(25)")
+                        .HasColumnName("IPV6_MODIFICACION");
+
+                    b.Property<string>("Ipv6Registro")
+                        .HasMaxLength(25)
+                        .HasColumnType("character varying(25)")
+                        .HasColumnName("IPV6_REGISTRO");
+
+                    b.Property<Guid?>("UsuarioContactoId")
+                        .HasColumnType("uuid")
+                        .HasColumnName("USUARIO_CONACTO_ID");
+
+                    b.Property<string>("UsuarioModificacion")
+                        .HasMaxLength(20)
+                        .HasColumnType("character varying(20)")
+                        .HasColumnName("USUARIO_MODIFICACION");
+
+                    b.Property<string>("UsuarioRegistro")
+                        .HasMaxLength(20)
+                        .HasColumnType("character varying(20)")
+                        .HasColumnName("USUARIO_REGISTRO");
+
+                    b.HasKey("IdProveedor");
+
+                    b.ToTable("PROVEEDOR", (string)null);
+                });
+
             modelBuilder.Entity("SEGURIDAD.SubModulo_.Web.Dominio.Entidad.SubModulo", b =>
                 {
                     b.Property<Guid>("Id")
@@ -182,6 +254,11 @@ namespace SEGURIDAD.Migrations
                         .IsRequired()
                         .HasMaxLength(512)
                         .HasColumnType("character varying(512)");
+
+                    b.Property<string>("Codigo")
+                        .HasMaxLength(10)
+                        .HasColumnType("character varying(10)")
+                        .HasColumnName("Codigo");
 
                     b.Property<string>("Contraseña")
                         .IsRequired()

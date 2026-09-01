@@ -25,6 +25,11 @@ namespace SEGURIDAD.Usuario_.Web.Infraestructura.Adapter
         public async Task<List<Usuario>> ListarUsuario(CancellationToken ct = default) =>
             await _ctx.Usuarios.ToListAsync(ct);
 
+        public async Task<List<Usuario>> ListarActivosAsync(CancellationToken ct = default) =>
+            await _ctx.Usuarios
+                      .Where(u => u.Activo)
+                      .ToListAsync(ct);
+
         public async Task<bool> ExisteEmailUsuario(Email email, CancellationToken ct = default) =>
             await _ctx.Usuarios
                 .AnyAsync(u => u.Email.Valor == email.Valor, ct);

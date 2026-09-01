@@ -22,6 +22,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\CORE\CORE.csproj" />
     <ProjectReference Include="..\SEGURIDAD\SEGURIDAD.csproj" />
     <ProjectReference Include="..\MAESTRO\MAESTRO.csproj" />
   </ItemGroup>

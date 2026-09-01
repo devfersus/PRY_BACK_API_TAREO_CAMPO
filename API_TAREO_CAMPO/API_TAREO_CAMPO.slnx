@@ -1,5 +1,6 @@
 <Solution>
   <Project Path="../CONFIGURACION/CONFIGURACION.csproj" />
+  <Project Path="../CORE/CORE.csproj" Id="070af936-544b-46ed-97d6-058caa51c4dc" />
   <Project Path="../MAESTRO/MAESTRO.csproj" />
   <Project Path="../SEGURIDAD/SEGURIDAD.csproj" />
   <Project Path="API_TAREO_CAMPO.csproj" />

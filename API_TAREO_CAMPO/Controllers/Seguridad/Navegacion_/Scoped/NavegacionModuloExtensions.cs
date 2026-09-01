@@ -18,6 +18,10 @@ using SEGURIDAD.SubModulo_.Web.Aplicacion.CasosUso;
 using SEGURIDAD.SubModulo_.Web.Aplicacion.Ports;
 using SEGURIDAD.SubModulo_.Web.Dominio.Interface;
 using SEGURIDAD.SubModulo_.Web.Infraestructura.Adaptador;
+using SEGURIDAD.Proveedor_.Web.Aplicacion.CasosUso;
+using SEGURIDAD.Proveedor_.Web.Aplicacion.Ports;
+using SEGURIDAD.Proveedor_.Web.Dominio.Interface;
+using SEGURIDAD.Proveedor_.Web.Infraestructura.Adaptador;
 using SEGURIDAD.Usuario_.Web.Aplicacion.CasosUso;
 using SEGURIDAD.Usuario_.Web.Aplicacion.Ports;
 using SEGURIDAD.Usuario_.Web.Dominio.Interface;
@@ -47,6 +51,8 @@ namespace API_TAREO_CAMPO.Controllers.Seguridad.Navegacion_.Scoped
             services.AddScoped<IPermisoCasoUso           , PermisoServicioAplicacion>();
             services.AddScoped<IPermisoDetalleCasoUso    , PermisoDetalleServicioAplicacion>();
             services.AddScoped<IUsuarioCasoUso           , UsuarioServicioAplicacion>();
+            services.AddScoped<IProveedorRepository      , ProveedorRepositorioEfCore>();
+            services.AddScoped<IProveedorCasoUso         , ProveedorServicioAplicacion>();
 
             return services;
         }
