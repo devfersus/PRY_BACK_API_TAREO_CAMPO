@@ -7,13 +7,15 @@ WORKDIR /src
 COPY ["API_TAREO_CAMPO/API_TAREO_CAMPO.csproj", "API_TAREO_CAMPO/"]
 COPY ["SEGURIDAD/SEGURIDAD.csproj",             "SEGURIDAD/"]
 COPY ["MAESTRO/MAESTRO.csproj",                 "MAESTRO/"]
+COPY ["CORE/CORE.csproj",                       "CORE/"]
 
 RUN dotnet restore "API_TAREO_CAMPO/API_TAREO_CAMPO.csproj"
 
-# Copiar código fuente completo de los 3 proyectos
+# Copiar código fuente completo de los 4 proyectos
 COPY API_TAREO_CAMPO/ API_TAREO_CAMPO/
 COPY SEGURIDAD/       SEGURIDAD/
 COPY MAESTRO/         MAESTRO/
+COPY CORE/            CORE/
 
 WORKDIR /src/API_TAREO_CAMPO
 RUN dotnet build "API_TAREO_CAMPO.csproj" -c $BUILD_CONFIGURATION -o /app/build
