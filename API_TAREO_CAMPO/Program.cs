@@ -34,14 +34,28 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddExceptionHandler<DomainExceptionHandler>();
 builder.Services.AddProblemDetails();
 
-builder.Services.AddDbContext<SeguridadDBContext>(opt =>
+builder.Services.AddHttpContextAccessor();
+builder.Services.AddScoped<AuditSaveChangesInterceptor>();
+builder.Services.AddDbContextFactory<AuditoriaDBContext>(opt =>
     opt.UseNpgsql(builder.Configuration.GetConnectionString("SeguridadDb")));
 
-builder.Services.AddDbContext<MaestroDBContext>(opt =>
-    opt.UseNpgsql(builder.Configuration.GetConnectionString("SeguridadDb")));
+builder.Services.AddDbContext<SeguridadDBContext>((sp, opt) =>
+{
+    opt.UseNpgsql(builder.Configuration.GetConnectionString("SeguridadDb"));
+    opt.AddInterceptors(sp.GetRequiredService<AuditSaveChangesInterceptor>());
+});
 
-builder.Services.AddDbContext<CoreDBContext>(opt =>
-    opt.UseNpgsql(builder.Configuration.GetConnectionString("SeguridadDb")));
+builder.Services.AddDbContext<MaestroDBContext>((sp, opt) =>
+{
+    opt.UseNpgsql(builder.Configuration.GetConnectionString("SeguridadDb"));
+    opt.AddInterceptors(sp.GetRequiredService<AuditSaveChangesInterceptor>());
+});
+
+builder.Services.AddDbContext<CoreDBContext>((sp, opt) =>
+{
+    opt.UseNpgsql(builder.Configuration.GetConnectionString("SeguridadDb"));
+    opt.AddInterceptors(sp.GetRequiredService<AuditSaveChangesInterceptor>());
+});
 
 builder.Services.AddSingleton<IConnectionMultiplexer>(
     _ => ConnectionMultiplexer.Connect(
