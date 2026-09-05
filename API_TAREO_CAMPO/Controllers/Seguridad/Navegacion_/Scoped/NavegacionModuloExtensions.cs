@@ -27,6 +27,10 @@ using SEGURIDAD.Usuario_.Web.Aplicacion.Ports;
 using SEGURIDAD.Usuario_.Web.Dominio.Interface;
 using SEGURIDAD.Usuario_.Web.Dominio.Servicio;
 using SEGURIDAD.Usuario_.Web.Infraestructura.Adapter;
+using SEGURIDAD.UsuarioPermiso_.Web.Aplicacion.CasosUso;
+using SEGURIDAD.UsuarioPermiso_.Web.Aplicacion.Ports;
+using SEGURIDAD.UsuarioPermiso_.Web.Dominio.Interface;
+using SEGURIDAD.UsuarioPermiso_.Web.Infraestructura.Adaptador;
 
 namespace API_TAREO_CAMPO.Controllers.Seguridad.Navegacion_.Scoped
 {
@@ -51,8 +55,11 @@ namespace API_TAREO_CAMPO.Controllers.Seguridad.Navegacion_.Scoped
             services.AddScoped<IPermisoCasoUso           , PermisoServicioAplicacion>();
             services.AddScoped<IPermisoDetalleCasoUso    , PermisoDetalleServicioAplicacion>();
             services.AddScoped<IUsuarioCasoUso           , UsuarioServicioAplicacion>();
-            services.AddScoped<IProveedorRepository      , ProveedorRepositorioEfCore>();
-            services.AddScoped<IProveedorCasoUso         , ProveedorServicioAplicacion>();
+            services.AddScoped<IProveedorRepository           , ProveedorRepositorioEfCore>();
+            services.AddScoped<IProveedorCasoUso              , ProveedorServicioAplicacion>();
+            services.AddScoped<IUsuarioPermisoRepository      , UsuarioPermisoRepositorioEfCore>();
+            services.AddScoped<IUsuarioPermisoCasoUso         , UsuarioPermisoServicioAplicacion>();
+            services.AddScoped<IPermisoUsuarioConsultaServicio, PermisoUsuarioConsultaServicio>();
 
             return services;
         }

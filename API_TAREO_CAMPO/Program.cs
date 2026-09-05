@@ -1,3 +1,4 @@
+using API_TAREO_CAMPO.Authorization;
 using API_TAREO_CAMPO.Controllers.Core.Ajuste_.Scoped;
 using API_TAREO_CAMPO.Controllers.Core.Compra_.Scoped;
 using API_TAREO_CAMPO.Controllers.Core.Kardex_.Scoped;
@@ -16,6 +17,7 @@ using API_TAREO_CAMPO.Services;
 using CORE.Infraestructura;
 using MAESTRO.Infraestructura;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using Scalar.AspNetCore;
@@ -77,6 +79,9 @@ builder.Services.AgregarModuloAjuste();
 
 builder.Services.AddSingleton<IRequestGuard, RedisRequestGuard>();
 builder.Services.AddScoped<EmailRequestGuardFilter>();
+
+builder.Services.AddSingleton<IAuthorizationPolicyProvider, PermisoAuthorizationPolicyProvider>();
+builder.Services.AddScoped<IAuthorizationHandler, PermisoAuthorizationHandler>();
 
 var jwtCfg = builder.Configuration.GetSection("Jwt");
 builder.Services
