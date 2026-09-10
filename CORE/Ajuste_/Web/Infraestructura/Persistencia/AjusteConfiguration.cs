@@ -8,7 +8,7 @@ namespace CORE.Ajuste_.Web.Infraestructura.Persistencia
     {
         public void Configure(EntityTypeBuilder<Ajuste> builder)
         {
-            builder.ToTable("AJUSTE");
+            builder.ToTable("ajuste");
 
             builder.HasKey(a => a.IdAjuste);
             builder.Property(a => a.IdAjuste)

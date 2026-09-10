@@ -8,7 +8,7 @@ namespace CORE.Compra_.Web.Infraestructura.Persistencia
     {
         public void Configure(EntityTypeBuilder<Compra> builder)
         {
-            builder.ToTable("COMPRA");
+            builder.ToTable("compra");
 
             builder.HasKey(c => c.IdCompra);
             builder.Property(c => c.IdCompra)

@@ -8,69 +8,69 @@ namespace MAESTRO.Producto_.Web.Infraestructura.Persistencia
     {
         public void Configure(EntityTypeBuilder<Producto> builder)
         {
-            builder.ToTable("PRODUCTO");
+            builder.ToTable("producto");
 
             builder.HasKey(p => p.IdProducto);
             builder.Property(p => p.IdProducto)
-                   .HasColumnName("ID_PRODUCTO");
+                   .HasColumnName("id_producto");
 
             builder.Property(p => p.Codigo)
-                   .HasColumnName("CODIGO")
+                   .HasColumnName("codigo")
                    .HasMaxLength(10);
 
             builder.Property(p => p.IdCategoria)
-                   .HasColumnName("CODIGO_CATEGORIA")
+                   .HasColumnName("codigo_categoria")
                    .HasMaxLength(10);
 
             builder.Property(p => p.IdProveedor)
-                   .HasColumnName("CODIGO_PROVEEDOR")
+                   .HasColumnName("codigo_proveedor")
                    .HasMaxLength(10);
 
             builder.Property(p => p.Precio)
-                   .HasColumnName("PRECIO")
+                   .HasColumnName("precio")
                    .HasPrecision(10, 2);
 
             builder.Property(p => p.Descripcion)
-                   .HasColumnName("DESCRIPCION")
+                   .HasColumnName("descripcion")
                    .HasMaxLength(50);
 
             builder.Property(p => p.Comentario)
-                   .HasColumnName("COMENTARIO")
+                   .HasColumnName("comentario")
                    .HasMaxLength(100);
 
             builder.Property(p => p.Estado)
-                   .HasColumnName("ESTADO");
+                   .HasColumnName("estado");
 
             builder.Property(p => p.FechaRegistro)
-                   .HasColumnName("FECHA_REGISTRO")
+                   .HasColumnName("fecha_registro")
                    .IsRequired();
 
             builder.Property(p => p.UsuarioRegistro)
-                   .HasColumnName("USUARIO_REGISTRO")
+                   .HasColumnName("usuario_registro")
                    .HasMaxLength(20);
 
             builder.Property(p => p.Ipv4Registro)
-                   .HasColumnName("IPV4_REGISTRO")
+                   .HasColumnName("ipv4_registro")
                    .HasMaxLength(25);
 
             builder.Property(p => p.Ipv6Registro)
-                   .HasColumnName("IPV6_REGISTRO")
+                   .HasColumnName("ipv6_registro")
                    .HasMaxLength(25);
 
             builder.Property(p => p.FechaModificacion)
-                   .HasColumnName("FECHA_MODIFICACION")
+                   .HasColumnName("fecha_modificacion")
                    .IsRequired();
 
             builder.Property(p => p.UsuarioModificacion)
-                   .HasColumnName("USUARIO_MODIFICACION")
+                   .HasColumnName("usuario_modificacion")
                    .HasMaxLength(20);
 
             builder.Property(p => p.Ipv4Modificacion)
-                   .HasColumnName("IPV4_MODIFICACION")
+                   .HasColumnName("ipv4_modificacion")
                    .HasMaxLength(25);
 
             builder.Property(p => p.Ipv6Modificacion)
-                   .HasColumnName("IPV6_MODIFICACION")
+                   .HasColumnName("ipv6_modificacion")
                    .HasMaxLength(25);
         }
     }

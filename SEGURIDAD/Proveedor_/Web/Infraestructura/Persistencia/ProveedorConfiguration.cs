@@ -8,7 +8,7 @@ namespace SEGURIDAD.Proveedor_.Web.Infraestructura.Persistencia
     {
         public void Configure(EntityTypeBuilder<Proveedor> builder)
         {
-            builder.ToTable("PROVEEDOR");
+            builder.ToTable("proveedor");
 
             builder.HasKey(p => p.IdProveedor);
             builder.Property(p => p.IdProveedor)

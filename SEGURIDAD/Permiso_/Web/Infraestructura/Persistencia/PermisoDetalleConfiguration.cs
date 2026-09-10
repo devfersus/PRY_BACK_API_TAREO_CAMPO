@@ -11,7 +11,7 @@ namespace SEGURIDAD.Permiso_.Web.Infraestructura.Persistencia
     {
         public void Configure(EntityTypeBuilder<PermisoDetalle> builder)
         {
-            builder.ToTable("PERMISO_DETALLE");
+            builder.ToTable("permiso_detalle");
             builder.HasKey(pd => pd.Id);
             builder.Property(pd => pd.Id).HasColumnName("permiso_detalle_id");
             builder.Property(pd => pd.PermisoId).HasColumnName("permiso_id").IsRequired();

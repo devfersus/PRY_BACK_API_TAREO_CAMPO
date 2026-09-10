@@ -8,7 +8,7 @@ namespace CORE.Salida_.Web.Infraestructura.Persistencia
     {
         public void Configure(EntityTypeBuilder<Salida> builder)
         {
-            builder.ToTable("SALIDA");
+            builder.ToTable("salida");
 
             builder.HasKey(s => s.IdSalida);
             builder.Property(s => s.IdSalida)

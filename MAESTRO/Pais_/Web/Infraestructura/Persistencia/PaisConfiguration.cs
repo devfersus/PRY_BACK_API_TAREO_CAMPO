@@ -8,10 +8,11 @@ namespace MAESTRO.Pais_.Web.Infraestructura.Persistencia
     {
         public void Configure(EntityTypeBuilder<Pais> builder)
         {
-            builder.ToTable("PAIS");
+            builder.ToTable("pais");
             builder.HasKey(p => p.Id);
-            builder.Property(p => p.Descripcion).HasMaxLength(50).IsRequired();
-            builder.Property(p => p.Activo).IsRequired();
+            builder.Property(p => p.Id).HasColumnName("id");
+            builder.Property(p => p.Descripcion).HasColumnName("descripcion").HasMaxLength(50).IsRequired();
+            builder.Property(p => p.Activo).HasColumnName("activo").IsRequired();
         }
     }
 }

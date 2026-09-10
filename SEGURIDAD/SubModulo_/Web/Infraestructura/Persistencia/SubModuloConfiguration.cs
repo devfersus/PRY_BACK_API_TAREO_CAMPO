@@ -9,10 +9,11 @@ namespace SEGURIDAD.SubModulo_.Web.Infraestructura.Persistencia
     {
         public void Configure(EntityTypeBuilder<SubModulo> builder)
         {
-            builder.ToTable("SUB_MODULO");
+            builder.ToTable("sub_modulo");
             builder.HasKey(s => s.Id);
-            builder.Property(s => s.Descripcion).HasMaxLength(100).IsRequired();
-            builder.Property(s => s.Activo).IsRequired();
+            builder.Property(s => s.Id).HasColumnName("id");
+            builder.Property(s => s.Descripcion).HasColumnName("descripcion").HasMaxLength(100).IsRequired();
+            builder.Property(s => s.Activo).HasColumnName("activo").IsRequired();
 
         }
     }

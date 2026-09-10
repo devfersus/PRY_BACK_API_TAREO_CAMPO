@@ -10,11 +10,12 @@ namespace SEGURIDAD.AccionSubModulo_.Web.Infraestructura.Persistencia
     {
         public void Configure(EntityTypeBuilder<AccionSubModulo> builder)
         {
-            builder.ToTable("ACCION_SUB_MODULO");
+            builder.ToTable("accion_sub_modulo");
             builder.HasKey(a => a.Id);
-            builder.Property(a => a.SubModuloId).IsRequired();
-            builder.Property(a => a.AccionId).IsRequired();
-            builder.Property(a => a.Activo).IsRequired();
+            builder.Property(a => a.Id).HasColumnName("id");
+            builder.Property(a => a.SubModuloId).HasColumnName("submoduloid").IsRequired();
+            builder.Property(a => a.AccionId).HasColumnName("accionid").IsRequired();
+            builder.Property(a => a.Activo).HasColumnName("activo").IsRequired();
 
             builder.HasOne<SubModulo>()
                    .WithMany()

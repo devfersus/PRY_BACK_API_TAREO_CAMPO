@@ -8,34 +8,34 @@ namespace CORE.Stock_.Web.Infraestructura.Persistencia
     {
         public void Configure(EntityTypeBuilder<Stock> builder)
         {
-            builder.ToTable("STOCK");
+            builder.ToTable("stock");
 
             builder.HasKey(s => s.IdStock);
             builder.Property(s => s.IdStock)
-                   .HasColumnName("ID_STOCK");
+                   .HasColumnName("id_stock");
 
             builder.Property(s => s.CodigoProducto)
-                   .HasColumnName("CODIGO_PRODUCTO")
+                   .HasColumnName("codigo_producto")
                    .HasMaxLength(10);
 
             builder.Property(s => s.CodigoAlmacen)
-                   .HasColumnName("CODIGO_ALMACEN")
+                   .HasColumnName("codigo_almacen")
                    .HasMaxLength(10);
 
             builder.Property(s => s.StockActual)
-                   .HasColumnName("STOCK_ACTUAL")
+                   .HasColumnName("stock_actual")
                    .HasPrecision(10, 2);
 
             builder.Property(s => s.StockMinimo)
-                   .HasColumnName("STOCK_MINIMO")
+                   .HasColumnName("stock_minimo")
                    .HasPrecision(10, 2);
 
             builder.Property(s => s.StockMaximo)
-                   .HasColumnName("STOCK_MAXIMO")
+                   .HasColumnName("stock_maximo")
                    .HasPrecision(10, 2);
 
             builder.Property(s => s.FechaActualizacion)
-                   .HasColumnName("FECHA_ACTUALIZACION")
+                   .HasColumnName("fecha_actualizacion")
                    .IsRequired();
         }
     }

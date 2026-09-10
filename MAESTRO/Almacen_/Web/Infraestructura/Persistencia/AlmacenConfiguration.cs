@@ -8,57 +8,57 @@ namespace MAESTRO.Almacen_.Web.Infraestructura.Persistencia
     {
         public void Configure(EntityTypeBuilder<Almacen> builder)
         {
-            builder.ToTable("ALMACEN");
+            builder.ToTable("almacen");
 
             builder.HasKey(a => a.IdAlmacen);
             builder.Property(a => a.IdAlmacen)
-                   .HasColumnName("ID_ALMACEN");
+                   .HasColumnName("id_almacen");
 
             builder.Property(a => a.Codigo)
-                   .HasColumnName("CODIGO")
+                   .HasColumnName("codigo")
                    .HasMaxLength(10);
 
             builder.Property(a => a.Descripcion)
-                   .HasColumnName("DESCRIPCION")
+                   .HasColumnName("descripcion")
                    .HasMaxLength(50);
 
             builder.Property(a => a.Ubicacion)
-                   .HasColumnName("UBICACION")
+                   .HasColumnName("ubicacion")
                    .HasMaxLength(100);
 
             builder.Property(a => a.Estado)
-                   .HasColumnName("ESTADO");
+                   .HasColumnName("estado");
 
             builder.Property(a => a.FechaRegistro)
-                   .HasColumnName("FECHA_REGISTRO")
+                   .HasColumnName("fecha_registro")
                    .IsRequired();
 
             builder.Property(a => a.UsuarioRegistro)
-                   .HasColumnName("USUARIO_REGISTRO")
+                   .HasColumnName("usuario_registro")
                    .HasMaxLength(20);
 
             builder.Property(a => a.Ipv4Registro)
-                   .HasColumnName("IPV4_REGISTRO")
+                   .HasColumnName("ipv4_registro")
                    .HasMaxLength(25);
 
             builder.Property(a => a.Ipv6Registro)
-                   .HasColumnName("IPV6_REGISTRO")
+                   .HasColumnName("ipv6_registro")
                    .HasMaxLength(25);
 
             builder.Property(a => a.FechaModificacion)
-                   .HasColumnName("FECHA_MODIFICACION")
+                   .HasColumnName("fecha_modificacion")
                    .IsRequired();
 
             builder.Property(a => a.UsuarioModificacion)
-                   .HasColumnName("USUARIO_MODIFICACION")
+                   .HasColumnName("usuario_modificacion")
                    .HasMaxLength(20);
 
             builder.Property(a => a.Ipv4Modificacion)
-                   .HasColumnName("IPV4_MODIFICACION")
+                   .HasColumnName("ipv4_modificacion")
                    .HasMaxLength(25);
 
             builder.Property(a => a.Ipv6Modificacion)
-                   .HasColumnName("IPV6_MODIFICACION")
+                   .HasColumnName("ipv6_modificacion")
                    .HasMaxLength(25);
         }
     }

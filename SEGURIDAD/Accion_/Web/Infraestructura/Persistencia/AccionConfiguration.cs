@@ -8,10 +8,11 @@ namespace SEGURIDAD.Accion_.Web.Infraestructura.Persistencia
     {
         public void Configure(EntityTypeBuilder<Accion> builder)
         {
-            builder.ToTable("ACCION");
+            builder.ToTable("accion");
             builder.HasKey(a => a.Id);
-            builder.Property(a => a.Descripcion).HasMaxLength(100).IsRequired();
-            builder.Property(a => a.Activo).IsRequired();
+            builder.Property(a => a.Id).HasColumnName("id");
+            builder.Property(a => a.Descripcion).HasColumnName("descripcion").HasMaxLength(100).IsRequired();
+            builder.Property(a => a.Activo).HasColumnName("activo").IsRequired();
         }
     }
 }

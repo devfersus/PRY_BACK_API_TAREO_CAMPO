@@ -8,7 +8,7 @@ public class LogAuditoriaConfiguration : IEntityTypeConfiguration<LogAuditoria>
 {
     public void Configure(EntityTypeBuilder<LogAuditoria> builder)
     {
-        builder.ToTable("LOG_AUDITORIA");
+        builder.ToTable("log_auditoria");
         builder.HasKey(l => l.IdLogAuditoria);
 
         builder.Property(l => l.IdLogAuditoria)

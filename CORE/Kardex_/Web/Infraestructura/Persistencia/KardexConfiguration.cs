@@ -8,7 +8,7 @@ namespace CORE.Kardex_.Web.Infraestructura.Persistencia
     {
         public void Configure(EntityTypeBuilder<Kardex> builder)
         {
-            builder.ToTable("KARDEX");
+            builder.ToTable("kardex");
 
             builder.HasKey(k => k.IdKardex);
             builder.Property(k => k.IdKardex)
