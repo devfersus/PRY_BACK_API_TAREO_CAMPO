@@ -8,6 +8,8 @@ using CORE.Salida_.Web.Dominio.Entidad;
 using CORE.Salida_.Web.Infraestructura.Persistencia;
 using CORE.Stock_.Web.Dominio.Entidad;
 using CORE.Stock_.Web.Infraestructura.Persistencia;
+using CORE.TareoCosecha_.Web.Dominio.Entidad;
+using CORE.TareoCosecha_.Web.Infraestructura.Persistencia;
 using Microsoft.EntityFrameworkCore;
 
 namespace CORE.Infraestructura
@@ -23,7 +25,8 @@ namespace CORE.Infraestructura
         public DbSet<SalidaDetalle>  SalidaDetalles => Set<SalidaDetalle>();
         public DbSet<Kardex>         Kardexs        => Set<Kardex>();
         public DbSet<Ajuste>         Ajustes        => Set<Ajuste>();
-        public DbSet<AjusteDetalle>  AjusteDetalles => Set<AjusteDetalle>();
+        public DbSet<AjusteDetalle>  AjusteDetalles  => Set<AjusteDetalle>();
+        public DbSet<TareoCosecha>   TareoCosechas   => Set<TareoCosecha>();
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -35,6 +38,7 @@ namespace CORE.Infraestructura
             modelBuilder.ApplyConfiguration(new KardexConfiguration());
             modelBuilder.ApplyConfiguration(new AjusteConfiguration());
             modelBuilder.ApplyConfiguration(new AjusteDetalleConfiguration());
+            modelBuilder.ApplyConfiguration(new TareoCosechaConfiguration());
             base.OnModelCreating(modelBuilder);
         }
     }

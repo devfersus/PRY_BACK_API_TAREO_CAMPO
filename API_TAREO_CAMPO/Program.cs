@@ -1,4 +1,6 @@
+using API_TAREO_CAMPO.Converters;
 using API_TAREO_CAMPO.Controllers.Core.Ajuste_.Scoped;
+using API_TAREO_CAMPO.Controllers.Core.TareoCosecha_.Scoped;
 using API_TAREO_CAMPO.Controllers.Core.Compra_.Scoped;
 using API_TAREO_CAMPO.Controllers.Core.Kardex_.Scoped;
 using API_TAREO_CAMPO.Controllers.Core.Salida_.Scoped;
@@ -27,7 +29,12 @@ AppContext.SetSwitch("Npgsql.EnableLegacyTimestampBehavior", true);
 
 var builder = WebApplication.CreateBuilder(args);
 
-builder.Services.AddControllers();
+builder.Services.AddControllers()
+    .AddJsonOptions(opt =>
+    {
+        opt.JsonSerializerOptions.Converters.Add(new FlexibleDateTimeConverter());
+        opt.JsonSerializerOptions.Converters.Add(new FlexibleNullableDateTimeConverter());
+    });
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
@@ -74,6 +81,7 @@ builder.Services.AgregarModuloSalida();
 builder.Services.AgregarModuloStock();
 builder.Services.AgregarModuloKardex();
 builder.Services.AgregarModuloAjuste();
+builder.Services.AgregarModuloTareoCosecha();
 
 builder.Services.AddSingleton<IRequestGuard, RedisRequestGuard>();
 builder.Services.AddScoped<EmailRequestGuardFilter>();
