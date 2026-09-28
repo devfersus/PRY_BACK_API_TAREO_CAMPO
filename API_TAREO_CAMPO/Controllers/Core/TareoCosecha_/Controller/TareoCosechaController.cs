@@ -1,11 +1,12 @@
 using CORE.TareoCosecha_.Web.Aplicacion.DTOs;
 using CORE.TareoCosecha_.Web.Aplicacion.Ports;
-using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Authorization;
 
 namespace API_TAREO_CAMPO.Controllers.Core.TareoCosecha_.Controller
 {
     [ApiController]
+    [Authorize]
     [Route("api/core/tareo-cosecha")]
     public class TareoCosechaController(ITareoCosechaCasoUso tareoCosechaCasoUso) : ControllerBase
     {
